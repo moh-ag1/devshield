@@ -11,6 +11,7 @@ export interface AuditFinding {
   originalText: string;
   issue: string;
   suggestion: string;
+  justification: string;
 }
 
 export interface Contract {

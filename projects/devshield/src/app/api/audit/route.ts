@@ -18,14 +18,16 @@ Focus on these 4 High-Risk Zones:
 3. Payment & Milestones: Are payments tied to "Client Satisfaction" (subjective) or "Technical Delivery" (objective)? Is there a late fee?
 4. Liability & Warranties: Is the developer personally liable for "consequential damages"?
 
-Return your findings as a JSON array of objects with this exact structure:
+Return your findings as a JSON array of objects with this exact structure. Every finding MUST follow this sequence: [Red Flag] -> [Safe Rewrite] -> [Justification].
+
 [
   {
     "clauseType": "IP" | "Payment" | "Scope" | "Liability",
     "severity": "Critical" | "Warning" | "Safe",
     "originalText": "The exact snippet from the contract",
-    "issue": "Why this is a risk for a developer",
-    "suggestion": "A safer, professional rewrite"
+    "issue": "The [Red Flag]: Why this is a risk for a developer",
+    "suggestion": "The [Safe Rewrite]: A safer, professional alternative",
+    "justification": "The [Justification]: A concise explanation of why the rewrite is safer"
   }
 ]
 
@@ -83,6 +85,7 @@ export async function POST(req: NextRequest) {
         original_text: f.originalText,
         issue: f.issue,
         suggestion: f.suggestion,
+        justification: f.justification,
       }));
 
       const { error: findingsError } = await supabaseAdmin

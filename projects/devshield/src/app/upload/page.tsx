@@ -60,7 +60,7 @@ export default function UploadPage() {
     // In a production app, we'd save the text to a DB and pass an ID
     // For the POC, we'll pass the text via a query param or local storage
     localStorage.setItem('pendingAuditText', extractedText);
-    router.push('/audit');
+    router.push('/preview');
   };
 
   return (

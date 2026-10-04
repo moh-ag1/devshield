@@ -23,7 +23,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <main className="flex-grow">{children}</main>
+        <footer className="border-t py-8 px-4 text-center text-sm text-gray-500 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <p className="mb-2 font-medium">© {new Date().getFullYear()} DevShield. Built for the developer community.</p>
+            <p className="max-w-2xl mx-auto opacity-75">
+              <strong>Disclaimer:</strong> DevShield is an AI-powered tool for informational purposes only and does not constitute legal advice.
+              The results provided are based on AI analysis and should not be relied upon as a substitute for professional legal counsel.
+              Please consult a qualified attorney for legal contracts.
+            </p>
+            <div className="mt-4 flex justify-center gap-6">
+              <a href="/terms" className="hover:underline">Terms of Service</a>
+              <a href="/privacy" className="hover:underline">Privacy Policy</a>
+            </div>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }
